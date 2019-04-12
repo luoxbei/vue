@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+</head>
+<body>
+
+<!--v-bind-->
+<div id="app">
+    <a v-bind:title="title">滑到我身上</a>
+
+    <br><br>
+    <!-- v-if v-else -->
+    <span v-if="seen">现在你看到我了</span>
+    <span v-else>略略略</span>
+    <input type="button" value="点击改变" id="seen">
+    <div v-if="type=='A'">A</div>
+    <div v-else-if="type=='B'">B</div>
+    <div v-else="type=='C'">C</div>
+
+    <br><br>
+    <!-- v-show -->
+    <p  v-show="display" >{{pp}}</p>
+    <input type="button" value="对啊对啊" v-on:click="show">
+    <br><br>
+    <!-- v-for -->
+    <ul>
+        <li v-for="item in list">
+            {{item.cate}}
+            <ol>
+                <li v-for="i in item.list">
+                {{i.title}}
+                </li>
+            </ol>
+        </li>
+    </ul>
+
+    <br>
+    <!-- v-for index -->
+    <ul>
+        <li v-for = "(i,index) in list">
+            {{i.cate}}-{{index}}-{{i.a}}
+        </li>
+    </ul>
+
+    <!--遍历对象-->
+    <br>
+    <ul>
+        <li v-for="item in object">
+            {{item}}
+        </li>
+    </ul>
+    <br>
+    <ul>
+        <li v-for="(item,key) in object">
+            {{key}}:{{item}}
+        </li>
+    </ul>
+    <br>
+    <ul>
+        <li v-for="(item,key,index) in object">
+            {{index+1}}.{{key}}:{{item}}
+        </li>
+    </ul>
+
+    <br><br>
+    <!-- v-on -->
+    <p>{{pp}}</p>
+    <input type="button" value="逆转" v-on:click="reverse">
+
+    <br><br>
+    <!-- v-model -->
+    <p>{{model}}</p>
+    <input type="text" v-model="model">
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+let vm = new Vue({
+    el:"#app",
+    data:{
+        display:true,
+        type:"B",
+        model:"嗨，哇啦",
+        pp:"为什么会有这么美丽的人儿",
+        title:"页面加载"+new Date().toLocaleString(),
+        seen:true,
+        list:[{
+            "cate":"国内新闻",
+            list: [{title: "国内新闻1111"},{title:"国内新闻222"}],
+            a:"hahah"
+             },
+            {
+            "cate":"国际新闻",
+            list: [{title: "国际新闻1111"},{title:"国际新闻222"}],
+                a:"lalal"
+             }],
+        object:{
+            name:"张可爱",
+            age:18,
+            sex:"男"
+        }
+    },
+    methods:{
+        reverse:function () {
+            this.pp =this.pp.split("").reverse().join("");
+        },
+        show:function () {
+            this.display = !this.display;
+        }
+    }
+})
+    $(function () {
+        $("#seen").click(function () {
+            vm.seen = !vm.seen;
+        })
+    })
+</script>

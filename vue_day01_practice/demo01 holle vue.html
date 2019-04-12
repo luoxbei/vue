@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>holle vue</title>
+</head>
+<body>
+    <div id="app">
+       {{msg}}
+    </div>
+    <br>
+    <input type="text" id="text">
+    <br>
+    <hr>
+    <br>
+    <div id="app2">
+        <p>name:{{name}}</p>
+        <p>age:{{age}}</p>
+        <input type="text" id="change_name">
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    let ve = new Vue({
+        el:"#app",
+        data:{
+            msg:"holle Vue"
+        }
+    })
+    let vm = new Vue({
+        el:"#app2",
+        data:{
+            name:"张三",
+            age:12
+        }
+    })
+    $(function () {
+        $("#text").change(
+            function () {
+                ve.msg = $(this).val();
+                $(this).val(" ");
+            }
+        )
+        $("#change_name").change(function () {
+            vm.name = $(this).val();
+        })
+
+    })
+</script>
