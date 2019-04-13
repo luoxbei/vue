@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>指令</title>
+    <style type="text/css">
+        .fade-enter-active,.fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,8 +20,13 @@
 
     <br><br>
     <!-- v-if v-else -->
-    <span v-if="seen">现在你看到我了</span>
-    <span v-else>略略略</span>
+    <transition name="fade">
+        <span v-if="seen">现在你看到我了</span>
+    </transition><br>
+    <span v-if="!seen">略略略</span>
+
+
+
     <input type="button" value="点击改变" id="seen">
     <div v-if="type=='A'">A</div>
     <div v-else-if="type=='B'">B</div>
@@ -114,6 +127,7 @@ let vm = new Vue({
         }
     }
 })
+
     $(function () {
         $("#seen").click(function () {
             vm.seen = !vm.seen;
