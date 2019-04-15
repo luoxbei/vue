@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>走马灯</title>
+</head>
+<body>
+
+    <div id="app">
+        <h3> {{mgs}} </h3>
+        <input type="button" value="走" @click="go">
+        <input type="button" value="停" @click="stop">
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            mgs:"加油啊~~努力呀~~",
+            timer:null
+        },
+        methods:{
+            go(){
+                if(this.timer != null){
+                    return;
+                }
+                this.timer = setInterval(()=>{
+                    let end = this.mgs.substring(0,1);
+                    let start = this.mgs.substring(1);
+                    this.mgs = start+end;
+                },400)
+            },
+            stop(){
+                clearInterval(this.timer);
+                this.timer = null;
+            }
+        }
+    })
+</script>

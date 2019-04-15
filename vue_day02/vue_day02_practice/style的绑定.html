@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style的绑定</title>
+</head>
+<body>
+
+<div id="app">
+    <!--对象的方式-->
+    <h2 :style="{color:'red','font-weight':200}">style的绑定~~~啦啦啦</h2>
+    <h2 :style="styleObject">对象的方式。。。。</h2>
+    <h2 :style="{color:iscolor,'font-weight':isbold,background:isbg}">只有努力！！！！</h2>
+    <!--数组-->
+    <h2 :style="[styleObject,la]">只有努力！！！！</h2>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            iscolor:"white",
+            isbold:900,
+            isbg:"black",
+            styleObject: {
+                color: 'blue',
+                fontSize: '13px'
+            },
+            la:{
+                background:"red"
+            }
+        }
+    })
+</script>

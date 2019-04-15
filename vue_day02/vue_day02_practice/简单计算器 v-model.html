@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单计算器 v-model</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model.number="n1">
+    <select v-model="opt">
+        <option v-for="item in list" :value="item">{{item}}</option>
+        <!--<option value="+">+</option>-->
+        <!--<option value="-">-</option>-->
+        <!--<option value="*">*</option>-->
+        <!--<option value="/">/</option>-->
+    </select>
+    <input type="text" v-model.number="n2">
+    <input type="button" value="=" @click="deng">
+    <input type="text" v-model="n3">
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    let vm =new Vue({
+        el:"#app",
+        data:{
+           n1:0,
+           n2:0,
+            list:["+","-","*","/"],
+            opt:"+",
+            n3:0
+
+        },
+        methods:{
+            deng(){
+                // let n1 = parseFloat(this.n1);
+                // let n2 = parseFloat(this.n2);
+                switch (this.opt) {
+                    case"+":
+                        this.n3=this.n1+this.n2;
+                        break;
+                    case"-":
+                        this.n3=this.n1-this.n2;
+                        break;
+                    case"*":
+                        this.n3=this.n1*this.n2;
+                        break;
+                    case"/":
+                        if(this.n2<=0){
+                            alert("被除数不能小于等于0");
+                            this.n1=0;
+                            this.n3=0;
+                            return;
+                        }
+                        this.n3=this.n1/this.n2;
+                        break;
+                }
+            }
+        }
+    })
+</script>

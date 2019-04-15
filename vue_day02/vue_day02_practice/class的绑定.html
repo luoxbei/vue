@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class的绑定</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .thin{
+            font-weight: normal;
+        }
+        .spac{
+            letter-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--数组的方法-->
+    <h2 :class=["red","thin","spac"]>哈哈哈哈，一起学习吧！！！！数组</h2>
+    <h2 :class=[isred,isthin]>哈哈哈哈，一起学习吧！！！！数组</h2>
+    <!--数组三元-->
+    <h2 :class=["red","thin",flag?"spac":""]>哈哈哈哈，一起学习吧！！！！数组三元</h2>
+    <br><br>
+    <hr>
+    <!--对象的方法-->
+    <h1 :class={red:1,thin:0,spac:1}>对象的方法</h1>
+    <h1 :class="classobj">对象的方法</h1>
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            isred:"red",
+            isthin:"thin",
+            flag:1,
+            classobj:{
+                red:1,
+                thin:1,
+                spac:1
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
