@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用component切换组件</title>
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        .v-enter-active,.v-leave-active{
+            transition:all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <a href="" @click.prevent="comName='login'">登录</a>
+    <a href="" @click.prevent="comName='register'">注册</a>
+
+  <transition mode="out-in">
+      <component :is="comName"></component>
+  </transition>
+
+</div>
+
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            comName:""
+        },
+        components:{
+            login:{
+                template:"<h2>我是登录组件</h2>"
+            },
+            register:{
+                template: "<h2>我是注册组件</h2>"
+            }
+        }
+    })
+
+</script>

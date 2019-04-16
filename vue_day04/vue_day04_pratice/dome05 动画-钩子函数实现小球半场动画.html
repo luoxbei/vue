@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        .ball{
+            display: block;
+            width: 20px;
+            height:20px;
+            border-radius: 50%;
+            background: #fc8c84;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <input type="button" value="点击" @click="flag=!flag">
+    <transition
+            @before-enter="beforeEnter"
+            @enter="Enter"
+            @after-enter="afterEnter"
+    >
+       <span class="ball" v-show="flag"></span>
+    </transition>
+    <!--<hr>-->
+    <!--<input type="button" value="点击" @click="flag2=!flag2">-->
+    <!--<transition name="my">-->
+        <!--<h3 v-show="flag2">嗨，大家好好啊~</h3>-->
+    <!--</transition>-->
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            flag:false
+        },
+        methods:{
+            beforeEnter(el){
+                el.style.transform="translate(0,0)";
+            },
+            Enter(el ,done){
+                el.offsetTop
+
+                el.style.transform="translate(150px,300px)";
+                el.style.transition="all 1s ease";
+
+                done()
+            },
+            afterEnter(el){
+                this.flag=!this.flag;
+            }
+
+        }
+    })
+
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子组件调用父组件方法</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,key) in parson">
+            {{key}}:{{item}}
+        </li>
+    </ul>
+
+    <com @parshow="show" ></com>
+
+</div>
+
+<template id="temp1">
+    <div>
+        <h2>我是子组件</h2>
+        <input type="button" value="点击我拿到父组件的方法" @click="myshow">
+    </div>
+</template>
+
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+    //组件模板
+    let com = {
+        template:"#temp1",
+        data:function(){
+          return{
+              son:{
+                  name:"大头儿子",
+                  age:19
+              }
+          }
+        },
+        methods: {
+            myshow(d){
+                this.$emit("parshow",this.son)
+        }
+
+        }
+    }
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            parson:null
+        },
+        methods:{
+            show(a){
+                this.parson = a;
+            }
+        },
+        components:{
+            // com2:com
+            com
+        }
+    })
+
+</script>

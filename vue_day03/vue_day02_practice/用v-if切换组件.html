@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用v-if切换组件</title>
+</head>
+<body>
+<div id="app">
+    <a href="" @click.prevent="flag=true">登录</a>
+    <a href="" @click.prevent="flag=false">注册</a>
+
+
+    <login v-if="flag"></login>
+    <register v-else="flag"></register>
+</div>
+
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        },
+        components:{
+            login:{
+                template:"<h2>我是登录组件</h2>"
+            },
+            register:{
+                template: "<h2>我是注册组件</h2>"
+            }
+        }
+    })
+
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建组件方式3</title>
+</head>
+<body>
+<div id="app">
+    <my-com1></my-com1>
+</div>
+<hr>
+<div id="app1">
+    <my-com1></my-com1>
+</div>
+
+<template id="temp1">
+    <h3>我是方式三----template标签</h3>
+</template>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    // let com1=Vue.extend({
+    //     template:"<h3>方式二创建的组件----Vue.extend</h3>"
+    // })
+    // Vue.component("myCom1",com1);
+
+
+    // Vue.component("myCom1",Vue.extend({
+    //     template:"<h3>方式二创建的组件----Vue.extend</h3>"
+    // }));
+
+    // Vue.component("myCom1",({
+    //     template:"<h3>方式二创建的组件----Vue.component</h3>"
+    // }));
+
+    Vue.component("myCom1",({
+        template:"#temp1"
+    }));
+
+    let vm = new Vue({
+        el:"#app",
+        data:{}
+    })
+    let vm1 = new Vue({
+        el:"#app1",
+        data:{}
+    })
+</script>

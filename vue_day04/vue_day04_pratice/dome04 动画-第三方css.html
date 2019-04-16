@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <link rel="stylesheet" href="css/animate.min.css">
+</head>
+<body>
+<div id="app">
+
+    <input type="button" value="点击" @click="flag=!flag">
+    <transition enter-active-class="animated hinge" leave-active-class="animated hinge">
+        <h3 v-show="flag">嗨，大家好~</h3>
+    </transition>
+    <!--<hr>-->
+    <!--<input type="button" value="点击" @click="flag2=!flag2">-->
+    <!--<transition name="my">-->
+        <!--<h3 v-show="flag2">嗨，大家好好啊~</h3>-->
+    <!--</transition>-->
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true,
+            flag2:true
+        }
+    })
+
+</script>

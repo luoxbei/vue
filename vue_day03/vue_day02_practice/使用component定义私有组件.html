@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用component定义私有组件</title>
+</head>
+<body>
+<div id="app">
+    <my-com1></my-com1>
+</div>
+
+<hr>
+
+<div id="app1">
+    <my-com1></my-com1>
+    <login></login>
+</div>
+
+<template id="temp1">
+    <h3>我是方式三----template标签</h3>
+</template>
+
+<template id="temp2">
+    <h2>我是私有的login组件</h2>
+</template>
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+    // let com1=Vue.extend({
+    //     template:"<h3>方式二创建的组件----Vue.extend</h3>"
+    // })
+    // Vue.component("myCom1",com1);
+
+
+    // Vue.component("myCom1",Vue.extend({
+    //     template:"<h3>方式二创建的组件----Vue.extend</h3>"
+    // }));
+
+    // Vue.component("myCom1",({
+    //     template:"<h3>方式二创建的组件----Vue.component</h3>"
+    // }));
+
+    Vue.component("myCom1",({
+        template:"#temp1"
+    }));
+
+    let vm = new Vue({
+        el:"#app",
+        data:{}
+    })
+    let vm1 = new Vue({
+        el:"#app1",
+        data:{},
+        components:{//定义实例内部私有组件的
+            login:{
+                // template:"<h2>这是私有的login组件</h2>"
+                template:"#temp2"
+            }
+        }
+    })
+</script>

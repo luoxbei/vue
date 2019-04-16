@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父给子传值</title>
+</head>
+<body>
+<div id="app">
+    <com1 :parentmsg="msg"></com1>
+</div>
+
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"我是爸爸的值"
+        },
+        components:{
+            com1:{
+                template:"<h2>我是儿子----通过绑定属性传来爸爸的值：{{ parentmsg }}</h2>",
+                props:["parentmsg"]//只读
+            }
+        }
+    })
+
+</script>

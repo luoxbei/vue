@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用component定义私有组件</title>
+</head>
+<body>
+<div id="app">
+    <mycom></mycom>
+    <hr>
+    <mycom2></mycom2>
+    <hr>
+    <mycom2></mycom2>
+    <hr>
+    <mycom2></mycom2>
+    <hr>
+    <mycom2></mycom2>
+</div>
+
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript">
+
+    Vue.component("mycom",({
+        template:"<h2>我是全局组件---{{msg}}</h2>",
+        data:function(){
+            return{
+                msg:"component定义"
+            }
+        }
+    }))
+    Vue.component("mycom2",({
+        template: "<div><input type='button' value='点击+1' @click='add'>{{ cont }}</div>",//组件自能有唯一根结点
+        data:function () {
+            return{
+                cont:0
+            }
+        },
+        methods:{
+            add(){
+                this.cont++;
+            }
+        }
+    }))
+    let vm = new Vue({
+        el:"#app",
+        data:{}
+    })
+
+</script>
